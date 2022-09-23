@@ -6,10 +6,10 @@
       "value": "test"
     },
     "projectName": {
-      "value": "azfuncapptemplate"
+      "value": "jira-automation-poc"
     },
     "projectAcronym": {
-      "value": "afat"
+      "value": "jac"
     }
   }
 }
