@@ -1,1 +1,1 @@
-GET https://fa-prd-azfuncapptemplate.azurewebsites.net/api/health-status HTTP/1.1
+GET https://fa-prd-jira-automation-poc.azurewebsites.net/api/health-status HTTP/1.1

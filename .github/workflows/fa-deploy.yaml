@@ -16,7 +16,7 @@ on:
         required: true
 
 env:
-  PROJECT_NAME: azfuncapptemplate
+  PROJECT_NAME: jira-automation-poc
   AZURE_FUNCTIONAPP_PACKAGE_PATH: './src'
   DOTNET_VERSION: '6.x'
 
