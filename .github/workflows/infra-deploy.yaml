@@ -1,0 +1,70 @@
+name: 'Infra - Deploy'
+
+on:
+  workflow_call:
+    inputs:
+      gha_env:
+        required: true
+        type: string
+
+      azure_env:
+        required: true
+        type: string
+
+    secrets:
+      azure_credentials:
+        required: true
+
+env:
+  PROJECT_NAME: azfuncapptemplate
+
+jobs:
+  deploy_infra:
+    name: Deploy Infra
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.gha_env }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+
+      - name: Azure Login
+        uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.azure_credentials }}
+
+      - name: Deploy Resource Group
+        env:
+          LOCATION: australiaeast
+        uses: Azure/CLI@v1
+        with:
+          inlineScript: >
+            az deployment sub create
+            --name rg-${{ inputs.azure_env }}-${{ env.PROJECT_NAME }}-${{ github.run_number }}
+            --location ${{ env.LOCATION }}
+            --template-file ./infra/modules/resource-group.bicep
+            --parameters envKey=${{ inputs.azure_env }} projectName=${{ env.PROJECT_NAME }} location=${{ env.LOCATION }}
+
+      - name: Validate Azure Infra Deployment
+        if: ${{ success() }}
+        uses: Azure/CLI@v1
+        with:
+          inlineScript: >
+            az deployment group create
+            --name validate-infra-${{ inputs.azure_env }}-${{ env.PROJECT_NAME }}-${{ github.run_number }}
+            --resource-group rg-${{ inputs.azure_env }}-${{ env.PROJECT_NAME }}
+            --mode Incremental
+            --template-file ./infra/main.bicep
+            --parameters ./infra/parameters/infra-${{ inputs.azure_env }}.parameters.json
+            --what-if
+
+      - name: Deploy Azure Infra
+        if: ${{ success() }}
+        uses: Azure/CLI@v1
+        with:
+          inlineScript: >
+            az deployment group create
+            --name infra-${{ inputs.azure_env }}-${{ env.PROJECT_NAME }}-${{ github.run_number }}
+            --resource-group rg-${{ inputs.azure_env }}-${{ env.PROJECT_NAME }}
+            --mode Incremental
+            --template-file ./infra/main.bicep
+            --parameters ./infra/parameters/infra-${{ inputs.azure_env }}.parameters.json

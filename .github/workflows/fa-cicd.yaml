@@ -1,0 +1,43 @@
+name: 'Function App - CI/CD'
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '.github/**/fa**.yaml'
+
+  workflow_dispatch:
+
+env:
+  PROJECT_KEY: afat
+
+jobs:
+  deploy_dev:
+    name: Deploy to DEV
+    uses: ./.github/workflows/fa-deploy.yaml
+    with:
+      gha_env: DEV
+      azure_env: dev
+    secrets:
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+
+  deploy_test:
+    name: Deploy to TEST
+    if: github.ref_name == 'main'
+    needs: deploy_dev
+    uses: ./.github/workflows/fa-deploy.yaml
+    with:
+      gha_env: TEST
+      azure_env: test
+    secrets:
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+
+  deploy_prd:
+    name: Deploy to PRD
+    needs: deploy_test
+    uses: ./.github/workflows/fa-deploy.yaml
+    with:
+      gha_env: PRD
+      azure_env: prd
+    secrets:
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
