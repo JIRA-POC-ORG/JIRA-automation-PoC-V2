@@ -28,7 +28,7 @@ namespace AzureFunctionAppTemplate.Functions
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("C# HTTP trigger function processed a request. Testing out the PR process");
 
             string name = req.Query["name"];
 
