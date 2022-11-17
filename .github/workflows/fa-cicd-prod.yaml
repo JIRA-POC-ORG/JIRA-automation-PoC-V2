@@ -2,7 +2,6 @@ name: 'Function App - CI/CD - Prod'
 
 on:
 
-  #trigger for manual
   workflow_dispatch:
         paths:
       - 'src/**'
