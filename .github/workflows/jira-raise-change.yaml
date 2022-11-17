@@ -11,9 +11,11 @@ on:
         required: true
         type: string
 
-    #secrets:
-    #  azure_credentials:
-    #    required: true
+    secrets:
+      jira_base_url:
+      jira_user_email:
+      jira_api_token:
+        required: true
 
 #env:
 #  PROJECT_NAME: jira-automation-poc
@@ -28,9 +30,9 @@ jobs:
             - name: Login
               uses: atlassian/gajira-login@master
               env:
-                JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-                JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-                JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+                JIRA_BASE_URL: ${{ secrets.jira_base_url }}
+                JIRA_USER_EMAIL: ${{ secrets.jira_user_email }}
+                JIRA_API_TOKEN: ${{ secrets.jira_api_token }}
 
             - name: Create
               id: create

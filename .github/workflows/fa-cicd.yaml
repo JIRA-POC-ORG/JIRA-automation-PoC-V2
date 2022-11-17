@@ -49,7 +49,9 @@ jobs:
     with:
       gha_env: PRD
       azure_env: prd
-    #secrets:
-     #azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+    secrets:
+        jira_base_url: ${{ secrets.JIRA_BASE_URL }}
+        jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
+        jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
 
 
