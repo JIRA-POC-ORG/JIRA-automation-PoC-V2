@@ -2,9 +2,6 @@ name: 'Function App - CI/CD - Prod'
 
 on:
   workflow_dispatch:
-        paths:
-      - 'src/**'
-      - '.github/**/fa**.yaml'
 
 env:
   PROJECT_KEY: afat
