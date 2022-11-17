@@ -39,7 +39,7 @@ jobs:
               uses: atlassian/gajira-create@master
               with:
                 project: SD
-                issuetype: Change
+                issuetype: Task
                 summary: |
                   Change raise for JIRA POC
                 description: |
