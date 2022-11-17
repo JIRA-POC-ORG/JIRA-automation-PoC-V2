@@ -1,0 +1,25 @@
+name: 'Function App - CI/CD - Prod'
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '.github/**/fa**.yaml'
+
+  workflow_dispatch:
+
+env:
+  PROJECT_KEY: afat
+
+jobs:
+
+
+  deploy_prd:
+    name: Deploy to PRD
+    needs: deploy_test
+    uses: ./.github/workflows/fa-deploy.yaml
+    with:
+      gha_env: PRD
+      azure_env: prd
+    secrets:
+      azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
