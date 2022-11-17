@@ -1,12 +1,12 @@
 name: 'Function App - CI/CD - Prod'
 
-on:
-  push:
-    paths:
-      - 'src/**'
-      - '.github/**/fa**.yaml'
+#on:
+#  push:
+#    paths:
+#      - 'src/**'
+#      - '.github/**/fa**.yaml'
 
-  workflow_dispatch:
+#  workflow_dispatch:
 
 env:
   PROJECT_KEY: afat
