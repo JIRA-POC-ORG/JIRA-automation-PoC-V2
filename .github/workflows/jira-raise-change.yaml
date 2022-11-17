@@ -38,7 +38,7 @@ jobs:
               id: create
               uses: atlassian/gajira-create@master
               with:
-                project: SD
+                project: INSU
                 issuetype: Change
                 summary: |
                   Change raise for JIRA POC
