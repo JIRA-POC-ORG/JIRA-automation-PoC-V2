@@ -41,3 +41,15 @@ jobs:
       azure_env: prd
     secrets:
       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+
+  raise_change:
+    name: Raise JIRA change
+    needs: deploy_prd
+    uses: ./.github/workflows/jira-raise-change.yaml
+    with:
+      gha_env: PRD
+      azure_env: prd
+    #secrets:
+     #azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+
+
