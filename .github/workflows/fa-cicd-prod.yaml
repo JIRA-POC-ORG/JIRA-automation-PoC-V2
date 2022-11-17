@@ -1,7 +1,6 @@
 name: 'Function App - CI/CD - Prod'
 
 on:
-
   workflow_dispatch:
         paths:
       - 'src/**'
