@@ -48,9 +48,3 @@ jobs:
                 #  do a JIRA XML export to on an test issues to find the above
             - name: Log created issue
               run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-            - name: Log github event comment
-              run: echo "Github event ${{ github.event.comment }}"
-            - name: Log github event
-              run: echo "Github event ${{ github.event }}"
-            - name: Log github 
-              run: echo "Github event ${{ github}}"
