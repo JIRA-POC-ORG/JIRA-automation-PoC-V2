@@ -42,20 +42,11 @@ jobs:
     secrets:
       azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
-  deploy_prd_standard:
-    name: Deploy to PRD standard
-    needs: deploy_test
-    uses: ./.github/workflows/fa-deploy.yaml
-    with:
-      gha_env: PRD
-      azure_env: prd
-    secrets:
-      azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-
   raise_change:
     name: Raise JIRA change
     #if: contains(github.event.comment, 'standard change')
-    needs: deploy_prd_standard
+    #todo - get the above working
+    needs: deploy_prd
     uses: ./.github/workflows/jira-raise-change.yaml
     with:
       gha_env: PRD
@@ -64,5 +55,4 @@ jobs:
         jira_base_url: ${{ secrets.JIRA_BASE_URL }}
         jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
         jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
-    #run: echo "Issue ${{ steps.create.outputs.issue }} was created"
     
