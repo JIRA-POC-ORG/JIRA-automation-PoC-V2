@@ -45,7 +45,7 @@ jobs:
   raise_change:
     name: Raise JIRA change
     if: contains(github.event.comment, 'standard change')
-    needs: deploy_dev
+    #needs: deploy_dev
     uses: ./.github/workflows/jira-raise-change.yaml
     with:
       gha_env: PRD
