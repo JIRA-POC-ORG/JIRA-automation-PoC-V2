@@ -44,6 +44,6 @@ jobs:
                   Change raise for JIRA POC
                 description: |
                   Change description goes here
-                fields: '{"customfield_13658": "Insurance", "customfield_13621": "Standard", "customfield_13624": "2022-11-17T14:39:00.000+1100", "customfield_13625": "2022-11-17T14:39:00.000+1100", "customfield_13665": "No Outage"}'
+                fields: '{"customfield_13658": "Insurance", "customfield_13621": "Standard", "customfield_13624": "2022-11-17T14:39:00.000+1100", "customfield_13625": "2022-11-17T14:39:00.000+1100", "customfield_13665": "No Impact"}'
             - name: Log created issue
               run: echo "Issue ${{ steps.create.outputs.issue }} was created"
