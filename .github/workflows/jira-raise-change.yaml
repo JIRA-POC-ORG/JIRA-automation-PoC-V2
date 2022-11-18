@@ -44,6 +44,6 @@ jobs:
                   Change raise for JIRA POC
                 description: |
                   Change description goes here
-                fields: '{"customfield_13658 ": { "value": "option3" }
+                fields: '{"customfield_13658": { "value": "option3" }
             - name: Log created issue
               run: echo "Issue ${{ steps.create.outputs.issue }} was created"
