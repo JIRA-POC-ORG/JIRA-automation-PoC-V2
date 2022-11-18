@@ -44,6 +44,6 @@ jobs:
                   Change raise for JIRA POC
                 description: |
                   Change description goes here
-                fields: '{"customfield_13658 ": "Assignment Group Test", "customfield_13621 ": "Change Type Test", "customfield_13624 ": "2022-11-18", "customfield_13625 ": "Change completion date Test", "customfield_13665": "Service Impact Test"}
-           name: Log created issue
+                fields: '{"customfield_13658 ": "Assignment Group Test", "customfield_13621 ": "Change Type Test", "customfield_13624 ": "2022-11-18", "customfield_13625 ": "Change completion date Test", "customfield_13665": "Service Impact Test"}'
+            - name: Log created issue
               run: echo "Issue ${{ steps.create.outputs.issue }} was created"
