@@ -44,8 +44,8 @@ jobs:
 
   raise_change:
     name: Raise JIRA change
-    if: contains(github.event.comment, 'standard change')
-    #needs: deploy_dev
+    #if: contains(github.event.comment, 'standard change')
+    needs: deploy_dev
     uses: ./.github/workflows/jira-raise-change.yaml
     with:
       gha_env: PRD
@@ -55,5 +55,4 @@ jobs:
         jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
         jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
     #run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-
     
