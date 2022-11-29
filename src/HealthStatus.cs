@@ -38,7 +38,7 @@ namespace AzureFunctionAppTemplate.Functions
 
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name} my friend. This HTTP triggered function executed successfully!!!. Yay";
+                : $"Hello, {name} my friend. This HTTP triggered function executed successfully!!!. Yay. Testing JIRA Compass";
 
             return new OkObjectResult(responseMessage);
         }
